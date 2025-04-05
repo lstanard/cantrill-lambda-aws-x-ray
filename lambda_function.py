@@ -6,6 +6,9 @@ import boto3 # available in Lambda
 import requests
 import aws_xray_sdk.core
 
+from aws_xray_sdk.core import patch_all
+patch_all()
+
 def lambda_handler(event, context):
     with aws_xray_sdk.core.xray_recorder.capture('get_dog_images'):
         # Create an S3 client
